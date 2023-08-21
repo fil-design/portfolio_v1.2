@@ -79,6 +79,27 @@
           transform: translateX(100%);
         }
       }
+
+      @keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+#splash-screen {
+  animation: fadeIn 1.5s ease-in forwards;
+}
+
+#splash-screen.hidden {
+  animation: fadeOut 1.5s ease-out forwards;
+  animation-delay: 2s;
+}
+
+
     </style>
     <title>Home</title>
   </head>
@@ -92,12 +113,12 @@
     <!-- Splash Screen Overlay -->
     <div
       id="splash-screen"
-      class="fixed inset-0 flex flex-col items-center justify-center bg-black z-50 space-y-6"
+      class="fixed inset-0 flex flex-col items-center justify-center bg-black z-50 space-y-6 opacity-100 transition-opacity duration-[1500] ease-in-out"
     >
       <img
         src="https://res.cloudinary.com/dz3uczoye/image/upload/v1692603815/Fil-Design_logo_J1_elro8x.png"
         alt="Logo"
-        class="mx-auto h-8 scale-[2] md:scale-[1.50] lg:scale-[1.75] xl:scale-[2]"
+        class="mx-auto h-8 scale-[2] md:scale-[1.50] lg:scale-[1.75] xl:scale-[2] opacity-100 transition-opacity duration-[1500] ease-in-out"
       />
       <div class="race-by"></div>
     </div>
@@ -1766,33 +1787,24 @@
 
     <!-- splash screen disappear -->
     <script>
+
+      function fadeOut(element, duration) {
+        element.style.transition = `opacity ${duration / 1000}s ease-in-out`;
+        element.style.opacity = 0;
+      
+        setTimeout(function () {
+          element.style.display = "none";
+        }, duration);
+      }
+      
       document.addEventListener("DOMContentLoaded", function () {
         var splashScreen = document.getElementById("splash-screen");
-
-        // Show splash screen
-        splashScreen.style.opacity = 1;
-
-        setTimeout(function () {
-          gsap.to(splashScreen, {
-            duration: 1.5,
-            opacity: 0,
-            onComplete: function () {
-              splashScreen.style.display = "none";
-
-              // After the splash screen fades out, restore the scroll position
-              var scrollPosition = sessionStorage.getItem("scrollPosition");
-              if (scrollPosition) {
-                window.scrollTo(0, scrollPosition);
-              }
-            },
-          });
-        }, 2000); // Set timeout for 2 seconds (2000 milliseconds)
+      
+        fadeOut(splashScreen, 2000); // Set the duration (in milliseconds)
       });
+      
+      
 
-      // Store scroll position before leaving the page
-      window.addEventListener("beforeunload", function () {
-        sessionStorage.setItem("scrollPosition", window.scrollY);
-      });
     </script>
 
     <script>
