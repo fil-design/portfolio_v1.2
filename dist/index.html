@@ -1455,7 +1455,8 @@
           Per qualsiasi domanda puoi mandarmi una e-mail direttamente dal form
           sottostante
         </p>
-        <form action="#" class="space-y-8">
+
+        <form class="space-y-8" name="contact" method="POST" netlify onSubmit ="submit" data-netlify-honeypot ="bot-field">
           <div>
             <label
               for="email"
@@ -1464,6 +1465,7 @@
             >
             <input
               type="email"
+              name="email"
               id="email"
               class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5"
               placeholder="esempio@gmail.com"
@@ -1478,6 +1480,7 @@
             >
             <input
               type="text"
+              name ="subject"
               id="subject"
               class="block p-3 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 shadow-sm focus:ring-primary-500 focus:border-primary-500 "
               placeholder="Inserisci l'oggetto della mail"
@@ -1491,6 +1494,8 @@
               >Messaggio</label
             >
             <textarea
+             type="text"
+             name ="message"
               id="message"
               rows="6"
               class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg shadow-sm border border-gray-300 focus:ring-primary-500 focus:border-primary-500"
@@ -1498,10 +1503,10 @@
             ></textarea>
           </div>
           <div>
-            <a
-              href="#"
+            <button
+              type="submit"
               class="text-white bg-[#14BE6B] focus:ring-4 focus:ring-primary-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center hover:bg-[#109E59]"
-              >Invia</a
+              >Invia</button
             >
           </div>
         </form>
