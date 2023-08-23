@@ -97,7 +97,6 @@
   animation-delay: 2s;
 }
 
-
     </style>
     <title>Home</title>
   </head>
@@ -201,9 +200,24 @@
     </nav>
 
     <!-- hero -->
-    <section class="" style="background: linear-gradient(to bottom, #000000, #262626)">
+    <section class="relative overflow-hidden">
+      <video autoplay muted loop class="absolute top-0 left-0 w-full h-full object-cover -z-10 opacity-5 sm:hidden" style="filter: brightness(40%);"> 
+        <source src="https://cdn.dribbble.com/uploads/39418/original/0cc960a3bf612d0badc4f6165eb36f7b.mp4?1657824915"
+                    autoplay="{true}" loop muted
+                    className="absolute -z-10 w-auto 
+                    min-w-full min-h-full max-w-none"
+                 type="video/mp4" >
+      </video> 
+      <video autoplay muted loop class="hidden sm:absolute top-0 left-0 w-full h-full object-cover -z-10 opacity-5" style="filter: brightness(40%);"> 
+        <source src="https://cdn.dribbble.com/uploads/39417/original/49dbf46eae15d227fc95a69cee31251e.mp4?1657824906"
+                    autoplay="{true}" loop muted
+                    className="absolute -z-10 w-auto 
+                    min-w-full min-h-full max-w-none"
+                 type="video/mp4" >
+      </video>    
+
       <div
-        class="max-w-screen-xl mx-auto grid grid-cols-1 h-screen py-8 px-4 lg:py-16 lg:px-6" style="background: linear-gradient(to bottom, #000000, #262626)"
+        class="max-w-screen-xl mx-auto relative grid grid-cols-1 h-screen py-8 px-4 lg:py-16 lg:px-6 z-20 " 
       >
         <div class="order-1 px-4 mx-auto flex flex-col justify-center">
           <h1
