@@ -101,3 +101,24 @@ EOD;
 
 
 ?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirmation Page</title>
+</head>
+<body>
+    <?php
+    // Check if a confirmation message is passed as a query parameter
+    if (isset($_GET['name'])) {
+        $confirmationMessage = $_GET['name'];
+        echo '<h1>' . htmlspecialchars($confirmationMessage) . '</h1>';
+    } else {
+        // If no confirmation message is provided, display a default message
+        echo '<h1>Thank you for your submission!</h1>';
+    }
+    ?>
+</body>
+</html>
