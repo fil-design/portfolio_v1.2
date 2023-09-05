@@ -1,5 +1,4 @@
 <?php
-
 // Function to extract name and email from query parameters
 function extractInfoFromQueryParameters($queryParameters) {
     parse_str($queryParameters, $params);
@@ -41,7 +40,7 @@ if (isset($_SERVER['QUERY_STRING'])) {
         // Convert the invoice data to JSON
         $invoiceJson = json_encode($invoiceData);
 
-        // Generate the JavaScript code
+        // Generate the JavaScript code to download the invoice PDF
         $jsCode = <<<EOD
 var https = require("https");
 var fs = require("fs");
@@ -92,14 +91,15 @@ EOD;
 
         // Output the JavaScript code
         echo $jsCode;
+
+        // Display a confirmation message
+        echo '<h1>Thank you for your submission, ' . htmlspecialchars($info['name']) . '!</h1>';
     } else {
         echo 'Name and email not found in query parameters.' . PHP_EOL;
     }
 } else {
     echo 'No query parameters found in the URL.' . PHP_EOL;
 }
-
-
 ?>
 
 <!DOCTYPE html>
@@ -110,15 +110,6 @@ EOD;
     <title>Confirmation Page</title>
 </head>
 <body>
-    <?php
-    // Check if a confirmation message is passed as a query parameter
-    if (isset($_GET['name'])) {
-        $confirmationMessage = $_GET['name'];
-        echo '<h1>' . htmlspecialchars($confirmationMessage) . '</h1>';
-    } else {
-        // If no confirmation message is provided, display a default message
-        echo '<h1>Thank you for your submission!</h1>';
-    }
-    ?>
+    <h1>THANK YOU FOR THE ORDER</h1>
 </body>
 </html>
